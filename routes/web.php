@@ -21,5 +21,5 @@ $router->group(['prefix' => 'api'], function () use ($router)
 {
     $router->get('members', ['uses' => 'MemberController@showAllMembers']);
     $router->get('members/{id}', ['uses' => 'MemberController@showOneMember']);
-    $router->get('member/{id}/bookings', ['uses' => 'App\Http\Controllers\MemberController@showMemberBookings']);
+    $router->get('member/{id}/bookings', ['uses' => 'MemberController@showMemberBookings']);
 });
