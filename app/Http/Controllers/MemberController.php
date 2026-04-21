@@ -27,4 +27,26 @@ class MemberController extends Controller
         $bookings = Booking::all()->where('memberid', $id);
         return response()->json($bookings);
     }
+
+    public function create(Request $request)
+    {
+        $arr = $request->json()->all();
+        $member = new Member();
+        $member->forceFill($arr);
+        $member->save();
+        return response()->json($member, 201);
+    }
+
+    public function update($id, Request $request)
+    {
+        $Member = Member::findOrFail($id);
+        $Member->update($request->all());
+        return response()->json($Member, 200);
+    }
+
+    public function delete($id)
+    {
+        Member::findOrFail($id)->delete();
+        return response('Deleted Successfully', 200);
+    }
 }
